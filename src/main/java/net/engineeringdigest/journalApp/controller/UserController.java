@@ -1,8 +1,10 @@
 package net.engineeringdigest.journalApp.controller;
 
 import net.engineeringdigest.journalApp.Repository.UserRepository;
+import net.engineeringdigest.journalApp.api.response.WhetherResponse;
 import net.engineeringdigest.journalApp.entity.User;
 import net.engineeringdigest.journalApp.service.UserService;
+import net.engineeringdigest.journalApp.service.WhetherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ public class UserController {
     private UserRepository userRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private WhetherService whetherService;
 
 //    @GetMapping
 //    public List<User> gettAllUser(){
@@ -41,6 +45,17 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userRepository.deleteByUserName(authentication.getName());
 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping
+    public ResponseEntity<?> greeting(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WhetherResponse whetherResponse = whetherService.getWeather("Mumbai");
+        String greeting="";
+        if(whetherResponse!=null){
+            greeting=", Weather feels like "+ whetherResponse.getCurrent().getFeelslike();
+        }
+
+        return new ResponseEntity<>("Hi "+ authentication.getName()+ greeting,HttpStatus.OK);
     }
 }
 

@@ -42,6 +42,39 @@
 
 <!--            <scope>compile</scope>-->
         </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+<!--			<scope>compile</scope>-->
+		</dependency>
+<!--		<dependency>-->
+<!--&lt;!&ndash;			<groupId>org.springframework.security</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;			<artifactId>spring-security-jwt</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;			<version>1.1.1.RELEASE</version>&ndash;&gt;-->
+<!--&lt;!&ndash;			<scope>compile</scope>&ndash;&gt;-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.13.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.13.0</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.13.0</version>
+			<scope>runtime</scope>
+		</dependency>
     </dependencies>
 
 	<build>
